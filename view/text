@@ -1,0 +1,144 @@
+// Node js + Express Resize Image Before Upload
+// Follow the below given step to resize image before upload to directory/folder in Node js + express js:
+
+
+// Step 1 – Create Node JS App
+// Step 2 – Install Express and Multer Dependencies
+// Step 3 – Create Server.js File
+// Import Installed Dependencies
+// Configure Multer Package
+// Create Image File Upload Routes
+// Step 4 – Create Image/File Upload Form
+// Step 5 – Start App Development Server
+// Step 1 – Create Node JS App
+// Execute the following command on terminal or command prompt to create node js app:
+
+// mkdir my-app
+// cd my-app
+// npm init
+// Step 2 – Install Express and Multer Dependencies
+// Execute the following command to install express and multer dependencies in your node js app:
+
+// npm install express multer --save
+// npm install sharp --save
+// Recommended:-Node JS Express Passport Facebook Login Tutorial
+// Step 3 – Create Server.js File
+// Create server.js file , So go to your app root directory and create it.
+
+// Import Dependencies in Server.js File
+// Import above dependencies in server.js file:
+
+
+// const express = require('express');
+// const multer = require('multer');
+// const path = require('path');
+// const sharp = require('sharp');
+// Recommended:-Node js Express Rest API Image Upload Example
+// Configure Multer Package
+// Configure multer package to store files into directory:
+
+// const storage = multer.diskStorage({
+//     destination: function(req, file, cb) {
+//         cb(null, 'uploads/');
+//     },
+  
+//     filename: function(req, file, cb) {
+//         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+//     }
+// });
+  
+// var upload = multer({ storage: storage })
+// Create Image File Upload Routes
+// Create image file upload routes:
+
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + '/index.html');
+// });
+  
+// app.post('/', upload.single('image'),async (req, res) => {
+//        const { filename: image } = req.file;
+      
+//        await sharp(req.file.path)
+//         .resize(200, 200)
+//         .jpeg({ quality: 90 })
+//         .toFile(
+//             path.resolve(req.file.destination,'resized',image)
+//         )
+//         fs.unlinkSync(req.file.path)
+      
+//        res.redirect('/');
+// });
+// Recommended:-Node JS Express Image Upload to MySQL DB Tutorial
+// Complete code of server.js file:
+
+// const express = require('express');
+// const multer = require('multer');
+// const path = require('path');
+// const sharp = require('sharp');
+// const fs = require('fs');
+// const app = express();
+  
+// const storage = multer.diskStorage({
+//     destination: function(req, file, cb) {
+//         cb(null, 'uploads/');
+//     },
+  
+//     filename: function(req, file, cb) {
+//         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+//     }
+// });
+  
+// var upload = multer({ storage: storage })
+  
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + '/index.html');
+// });
+  
+// app.post('/', upload.single('image'),async (req, res) => {
+//        const { filename: image } = req.file;
+      
+//        await sharp(req.file.path)
+//         .resize(200, 200)
+//         .jpeg({ quality: 90 })
+//         .toFile(
+//             path.resolve(req.file.destination,'resized',image)
+//         )
+//         fs.unlinkSync(req.file.path)
+      
+//        res.redirect('/');
+// });
+  
+// app.listen(3000);
+// Recommended:-Build User Authentication Restful Apis with Node js Express and MySQL
+// Step 4 – Create Image/File Upload Form
+// Create index.html file to resize image before upload in node js app. So, add the following html code into it:
+
+
+// <!DOCTYPE html>
+// <html lang="en">
+//   <head>
+//     <title>Node js Resize Image Before Upload using Multer Example - Laratutorials
+// .com</title>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1">
+//   </head>
+//   <body>
+//     <h1>Node js Resize Image Before Upload using Multer Example - Laratutorials.com</h1>
+//     <form action="/" enctype="multipart/form-data" method="post">
+//       <input type="file" name="image" accept='image/*'>
+//       <input type="submit" value="Upload">
+//     </form>  
+//   </body>
+// </html>
+// Recommended:-Create Registration and Login Form in Node.js Express MySQL
+// Step 5 – Start App Development Server
+// You can use the following command to run development server:
+
+// //run the below command
+
+// npm start
+
+// after run this command open your browser and hit 
+
+// http://127.0.0.1:3000/
+// Conclusion
