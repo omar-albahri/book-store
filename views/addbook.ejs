@@ -1,0 +1,54 @@
+
+    <%-include('adminparts/header.ejs') %>
+    <br>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+    <div class="text-center" style="padding:50px 0">
+        <div class="logo">Add book</div>
+        <!-- Main Form -->
+        <div class="login-form-1">
+            <form id="login-form" class="text-left" action="/addbook" method ="POST">
+                <div class="login-form-main-message"></div>
+                <div class="main-login-form">
+                    <div class="login-group">
+                        <div class="form-group">
+                            <label for="lg_title" class="sr-only">Title</label>
+                            <input type="text" class="form-control" id="lg_title" name="lg_title" placeholder="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="lg_ISBN" class="sr-only">ISBN</label>
+                            <input type="text" class="form-control" id="lg_ISBN" name="lg_ISBN" placeholder="ISBN">
+                        </div>
+                        <div class="form-group">
+                            <label for="lg_author" class="sr-only">AuthorId</label>
+                            <input type="number" class="form-control" id="lg_author" name="lg_author" placeholder="AuthorId">
+                        </div>
+                          <from>
+                        <div class="form-group">
+                            <label for="img" class="sr-only">image</label>
+                            <input type="file" class="form-control-file"  name="img" placeholder="image">
+                        </div>
+                    </from>
+                        
+                    </div>
+                    <!-- <button type="submit" class="login-button">login</button> -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Add book</button>
+                   </div>
+                </div>
+               
+            </form>
+        </div>
+        <!-- end:Main Form -->
+    </div>
+    </div>
+    
+      <%-include('adminparts/footer.ejs') %>
+
+
+
